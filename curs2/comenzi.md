@@ -96,7 +96,7 @@ ng generate component admin sau ng g c admin
 
 ```
 
-const routes: Routes = [
+const routes: Routes = [  
 { path: 'admin', component: AdminComponent }
 ];
 
