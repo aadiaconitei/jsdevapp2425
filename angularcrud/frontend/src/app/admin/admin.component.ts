@@ -11,7 +11,7 @@ import { environment } from '../../environments/environment';
   styleUrl: './admin.component.css',
 })
 export class AdminComponent implements OnInit {
-   apiUrl = environment.API_URL;
+  apiUrl = environment.API_URL;
   users: any[] = [];
   widthImg: number = 150;
   selectedUser: User = {
@@ -60,12 +60,15 @@ export class AdminComponent implements OnInit {
     formData.append('prenume', this.selectedUser.prenume);
     formData.append('email', this.selectedUser.email);
     formData.append('telefon', this.selectedUser.telefon);
+    formData.append('id', this.selectedUser.id.toString());
     formData.append(
       'datanastere',
       this.selectedUser.datanastere?.toString() || ''
     );
     if (this.selectedFile) {
       formData.append('poza', this.selectedFile);
+    } else {
+      formData.append('poza', undefined as any); // Dacă nu există fișier, trimite undefined
     }
     // Pentru update, adaugă și id-ul dacă e cazul
 
@@ -75,6 +78,7 @@ export class AdminComponent implements OnInit {
         .subscribe((user: User) => {
           this.readUsers();
         });
+      console.log('User updated', this.selectedUser.id);
     } else {
       this.apiService.createUser(formData).subscribe((user: User) => {
         console.log('User updated', user);
@@ -82,8 +86,22 @@ export class AdminComponent implements OnInit {
     }
   }
 
-  selectUser(user: User) {
-    this.selectedUser = user;
+  // selectUser(user: User) {
+  //   this.selectedUser = user;
+  // }
+  selectUser(user: any) {
+    this.selectedUser = { ...user };
+
+    // Dacă datanastere e deja string YYYY-MM-DD, folosește direct
+    if (
+      this.selectedUser.datanastere &&
+      typeof this.selectedUser.datanastere === 'string'
+    ) {
+      this.selectedUser.datanastere = this.selectedUser.datanastere.substring(
+        0,
+        10
+      );
+    }
   }
 
   deleteUser(id: number) {

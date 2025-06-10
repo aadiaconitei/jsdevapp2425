@@ -9,7 +9,7 @@
             <div class="form-group">
                 <label for="exampleInputEmail1">Nume</label>
                 <input [(ngModel)]="selectedUser.nume" #name="ngModel" name="nume" type="text" class="form-control"
-                    id="nume" aria-describedby="numeHealp" required minlength="3" maxlength="250" pattern="^[a-zA-Z-]+$"
+                    id="nume" aria-describedby="numeHealp" required minlength="3" maxlength="250"
                     [class.is-invalid]="name.invalid && (name.dirty || name.touched)">
                 <small *ngIf="name.valid" id="numeHealp" class="form-text text-muted">Numele completat corect</small>
                 <div *ngIf="name.invalid && (name.dirty || name.touched)" class="invalid-feedback">
@@ -54,6 +54,8 @@
                 <input (change)="onFileSelected($event)" name="poza" type="file" class="form-control" id="poza"
                     aria-describedby="pozaHealp">
                 <small id="pozaHealp" class="form-text text-muted">Poza adaugat corect </small>
+
+
             </div>
             <input [(ngModel)]="selectedUser.id" name="id" type="hidden" class="form-control" id="id">
 
@@ -82,7 +84,7 @@
                 <td>{{ user.nume }}</td>
                 <td>{{ user.prenume }}</td>
                 <td>{{ user.email }}</td>
-                <td> 
+                <td>
                     <img [src]="apiUrl + '/uploads/' + user.poza" [style.width.px]="widthImg" />
                 </td>
                 <td>

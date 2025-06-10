@@ -57,7 +57,15 @@ exports.findOne = findOne;
 const create = (user, callback) => {
     const queryString = "INSERT INTO jsusers (nume, prenume, email, datanastere, telefon, cnp, poza) VALUES (?, ?, ?, ?, ?, ?, ?)";
     console.log(user);
-    db_1.db.query(queryString, [user.nume, user.prenume, user.email, user.datanastere, user.telefon, user.cnp, user.poza], (err, result) => {
+    db_1.db.query(queryString, [
+        user.nume,
+        user.prenume,
+        user.email,
+        user.datanastere,
+        user.telefon,
+        user.cnp,
+        user.poza,
+    ], (err, result) => {
         if (err) {
             callback(err);
         }
@@ -68,19 +76,48 @@ const create = (user, callback) => {
 exports.create = create;
 // update user
 const update = (user, callback) => {
-    const queryString = `UPDATE jsusers SET nume=?, prenume=?, telefon =?, cnp=?, poza =? WHERE id=?`;
-    db_1.db.query(queryString, [user.nume, user.prenume, user.telefon, user.cnp, user.poza, user.id], (err, result) => {
-        if (err) {
-            callback(err);
-        }
-        callback(null);
-    });
+    console.log("update user", user);
+    if (user.poza !== "undefined" && user.poza !== undefined) {
+        const queryString = `UPDATE jsusers SET nume=?, prenume=?, telefon =?, cnp=?, poza =?, datanastere=? WHERE id=?`;
+        db_1.db.query(queryString, [
+            user.nume,
+            user.prenume,
+            user.telefon,
+            user.cnp,
+            user.poza,
+            user.datanastere,
+            user.id,
+        ], (err, result) => {
+            if (err) {
+                console.error("MySQL error:", err);
+                callback(err);
+            }
+            callback(null);
+        });
+    }
+    else {
+        const queryString = `UPDATE jsusers SET nume=?, prenume=?, telefon =?, cnp=?, datanastere=? WHERE id=?`;
+        db_1.db.query(queryString, [
+            user.nume,
+            user.prenume,
+            user.telefon,
+            user.cnp,
+            user.datanastere,
+            user.id,
+        ], (err, result) => {
+            if (err) {
+                console.error("MySQL error:", err);
+                callback(err);
+            }
+            callback(null);
+        });
+    }
 };
 exports.update = update;
 // delete user
-const deleteUser = (user, callback) => {
+const deleteUser = (id, callback) => {
     const queryString = `DELETE FROM jsusers WHERE id=?`;
-    db_1.db.query(queryString, [user.id], (err, result) => {
+    db_1.db.query(queryString, [id], (err, result) => {
         if (err) {
             callback(err);
         }
