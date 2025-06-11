@@ -24,5 +24,5 @@ let vm = createApp({
         originalcolor: function () {
             this.styleobj.backgroundColor = "red";
         }
-    },
+    },  
 }).mount('#databinding');

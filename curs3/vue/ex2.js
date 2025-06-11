@@ -18,7 +18,7 @@ const vm = Vue.createApp({
 const app = Vue.createApp({
     data() {
         return {
-            seen: true,
+            seen: false,
             limbaje: [
                 { id: 1, text: 'JavaScript' },
                 { id: 2, text: 'Java' },
