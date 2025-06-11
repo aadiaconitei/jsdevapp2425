@@ -1,7 +1,7 @@
 
 ## Creează un nou proiect Vue folosind Vite:
 ```
-npm create vite@latest vuecrud 
+npm create vite@latest frontend 
 ```
 sau 
 ```
