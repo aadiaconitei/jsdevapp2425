@@ -21,6 +21,7 @@ export const findAll = (callback: Function) => {
         cnp: row.cnp,
         poza: row.poza,
         dataadaugare: row.dataadaugare,
+        status:row.status,
         actiune: "",
       };
       users.push(user);
@@ -131,6 +132,25 @@ export const deleteUser = (id: number, callback: Function) => {
   db.query(queryString, [id], (err, result) => {
     if (err) {
       callback(err);
+    }
+    callback(null);
+  });
+};
+
+export const statusUser = (userInfo:any, callback: Function) => {
+  let status = 1;
+  if(userInfo.userstatus==0){
+      status = 1;
+  }
+  else{
+    status =0;
+  }
+  const queryString = `UPDATE jsusers SET status =?  WHERE id=?`;
+  db.query(queryString, [status,userInfo.userId], (err, result) => {
+    if (err) {
+       console.error("MySQL error:", err);
+      callback(err);
+
     }
     callback(null);
   });

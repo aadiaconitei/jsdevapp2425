@@ -57,6 +57,9 @@
         <button class="btn btn-danger me-2 mt-2" @click="deleteUser">
           Delete
         </button>
+         <button class="btn btn-info me-2 mt-2" @click="statusUser">
+          Status 
+        </button>
       </div>
       <div v-else>
         <br />
@@ -90,6 +93,16 @@ export default {
     },
     deleteUser() {
       UserService.delete(this.currentUser.id)
+        .then((response) => {
+          console.log(response.data);
+          this.$router.push({ name: "users" });
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    },
+     statusUser() {
+      UserService.status(this.currentUser.id, this.currentUser.status)
         .then((response) => {
           console.log(response.data);
           this.$router.push({ name: "users" });

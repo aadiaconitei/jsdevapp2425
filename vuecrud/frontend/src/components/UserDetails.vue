@@ -17,6 +17,7 @@
       <p>
         <strong>Data naștere:</strong> {{ formatDate(currentUser.datanastere) }}
       </p>
+      
     </div>
   </div>
   <div v-else>
