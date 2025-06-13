@@ -1,5 +1,5 @@
 ```` 
-    npm create vite@latest react-ts-vite-app -- --template react-ts
+    npm create vite@latest react-app -- --template react-ts
     cd react-app
     npm install
     npm run dev
