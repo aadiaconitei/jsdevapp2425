@@ -1,11 +1,14 @@
 //import { useState } from 'react'
 
 import './App.css'
+import Form from './components/Form';
 import Masina from './components/Masina'
+import MyForm from './components/MyForm';
 import Salut from './components/Salut'
 
 function App() {
  const carInfo = { name: "Ford", model: "Mustang" };
+const obj = { name: 'Alice', email: 'demo@demo.com', password: '123456', car: 'BMW', message: 'Salut' };
 
   return (
     <>
@@ -14,7 +17,9 @@ function App() {
       <Salut nume='Ana'/>
 
      <Masina car={carInfo} />
-      
+
+     <Form />
+       <MyForm {...obj}/>
     </>
   )
 }
