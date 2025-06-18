@@ -2,15 +2,10 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import Salut from './components/Salut';
-import Masina from './components/Masina';
-import Form from './components/Form';
-import MyForm from './components/MyForms';
 
 function App() {
-  const [count, setCount] = useState(0);
-const carInfo = { name: "Ford", model: "Mustang" };
-const obj = { name: 'Alice', email: 'demo@demo.com', password: '123456', car: 'BMW', message: 'Salut' };
+  const [count, setCount] = useState(0)
+
   return (
     <>
       <div>
@@ -29,16 +24,7 @@ const obj = { name: 'Alice', email: 'demo@demo.com', password: '123456', car: 'B
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
-        <p>
-          Car Info: {carInfo.name} {carInfo.model}
-        </p>
-         <Salut nume = "Ana"  curs='React'/>
-         <Salut nume = "Dan" />
-         <Masina car={carInfo} />
       </div>
-         <h1> Frmular de inregistrare</h1>
-    <Form />
-    <MyForm {...obj}/>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
