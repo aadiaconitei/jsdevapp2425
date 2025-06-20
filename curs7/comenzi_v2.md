@@ -160,6 +160,19 @@ npm run dev
 npm i --save react-bootstrap@next bootstrap@5.3 react-router-dom axios formik npm date-fns
 npm install --save-dev @types/react-router-dom
 npm install bootstrap-icons
+
+
+npm install @tiptap/react @tiptap/starter-kit
+npm install @tiptap/extension-underline @tiptap/extension-strike @tiptap/extension-code @tiptap/extension-blockquote @tiptap/extension-link
+npm install @tiptap/extension-color @tiptap/extension-text-style @tiptap/extension-font-size
+
+
+npm install lexical @lexical/react @lexical/rich-text
+npm install @lexical/list
+npm install @lexical/link
+npm install @lexical/table
+npm install @lexical/code
+
 ```
 
 
@@ -171,21 +184,49 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 
 ### Structura 
 # Creează directoarele
+``` 
 mkdir -p src/components
 mkdir -p src/pages
 mkdir -p src/services
 mkdir -p src/types
 mkdir -p src/context
-
+```
 # Componente Creează fișierele în directoare
 ##### CREATE
+```bash
 touch src/components/UserForm.tsx
 touch src/components/CreateUser.tsx
+```
 ##### Read
+```bash
 touch src/components/UserList.tsx
 touch src/components/UserTableRow.tsx
+```
 ##### Update
+```bash
 touch src/components/EditUser.tsx
+```
+##### CREATE
+```bash
+touch src/components/CreatePost.tsx
+```
+```
+##### Read
+```bash
+touch src/components/Post.tsx
+
+```
+##### Update
+```bash
+touch src/components/EditPost.tsx
+```
+
+```bash
+touch src/components/Layout.tsx
+touch src/components/NavBar.tsx
+touch src/components/Header.tsx
+touch src/components/Footer.tsx
+```
 ##### Pagini
 touch src/pages/HomePage.tsx
 touch src/pages/Contact.tsx
@@ -196,8 +237,10 @@ touch src/pages/Posts.tsx
 touch src/pages/SinglePost.tsx
 touch src/pages/NotFound.tsx
 
-touch src/services/api.ts
+touch src/services/apiUsers.ts
+touch src/services/apiPosts.ts
 touch src/types/User.ts
+touch src/types/Post.ts
 touch src/routes.tsx
 touch src/config.ts
 touch src/context/authContext.tsx
@@ -206,8 +249,6 @@ touch src/context/authContext.tsx
 ### Edit App.tsx
 
 
-- importam react-router-dom
-- importam componentele necesare: CreateUser, EditUser, UserList
 - definim meniul si rutele respective
 
 ### Edit App.css
